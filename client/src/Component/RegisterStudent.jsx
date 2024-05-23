@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const RegisterStudent = () => {
   const [profile, setProfile] = useState({
@@ -21,6 +22,10 @@ const RegisterStudent = () => {
     e.preventDefault();
     console.log('Updated Profile:', profile);
     // You can add your update logic here
+    const response = axios.post("http://localhost:8080/register", {
+      withCredentials: true,
+      credentials: 'include',
+    },profile);
   };
 
   return (

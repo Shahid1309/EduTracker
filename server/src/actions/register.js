@@ -1,11 +1,18 @@
 import { random, authentication } from "../token/index.js";
-import { getUserByEmail, createUser } from "../db/users.js";
+import { getUserByEmail, createStudent } from "../db/users.js";
 import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
   try {
-    console.log("trg");
-    const { email, password, userType } = req.body;
+    console.log("In Reg");
+    const { firstName,
+    lastName,
+    email,
+    contactNo,
+    country,
+    city,
+    guardianName,
+    guardianContactNo} = req.body.profile;
 
     if (!email || !password) {
       return res.status(400).json({ message: "Fill both fields!" });

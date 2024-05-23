@@ -1,32 +1,42 @@
-import { getUserByEmail } from "../db/users.js";
-import { authentication, random } from "../token/index.js";
-import jwt from "jsonwebtoken";
+import { getUserByEmail } from '../db/users';
+import { authentication, random } from '../token';
+import jwt from 'jsonwebtoken';
 
 export const login = async (req, res) => {
   try {
-    console.log('In login')
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Fill in both fields" });
+      return res.status(400).json({message: 'Fill in both fields'});
     }
 
-    const user = await getUserByEmail(email);
-    console.log(user);
+    const user = await getUserByEmail(email).select(
+      "+authentication.salt +authentication.password"
+    );
 
     if (!user) {
-      return res.status(400).json({ message: "User does not exist" });
+      return res.status(400).json({message: 'User does not exist'});
     }
 
+    const expectedHash = authentication(
+      user.authentication.salt.toString(),
+      password
+    );
 
-
-    if (password != user.password) {
-      return res.status(403).json({ message: "Wrong credentials!" });
+    if (user.authentication.password != expectedHash) {
+      return res.status(403).json({message : "Wrong credentials!"});
     }
 
-    
+    const salt = random();
+    user.authentication.sessionToken = jwt.sign(user._id.toString(), salt);
 
-    
+    await user.save();
+
+    res.cookie("ET",user.authentication.sessionToken, {
+      domain: "localhost",
+      httpOnly:true,
+      path: "/",
+    });
 
     return res.status(200).json(user);
   } catch (error) {

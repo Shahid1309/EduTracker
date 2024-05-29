@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useStateValue } from "./StateProvider";
@@ -11,7 +11,40 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const { state, dispatch } = useStateValue();
 
+
+  useEffect(() => {
+    const initial = async () => {
+      const getData = await axios
+        .get("http://localhost:8080", {
+          withCredentials: true,
+          credentials: 'include',
+        })
+        .then((res) => res?.data);
+      if (getData)
+      {
+        dispatch({
+          type: "INITIAL",
+          state: getData,
+        });
+      // console.log(getData);
+      // if(state.userType==="student")
+      //   navigate('/adminlayout');
+      //   else if(state.userType==="teacher") 
+      //     navigate('adminlayout/profile');
+      if(state.userType==="student")
+        navigate('/adminlayout');
+        else if(state.userType==="teacher") navigate('adminlayout/profile');
+    }
+        else return;
+    };
+    initial();
+      
+  },[])
+
+
   const handleSubmit = async (e) => {
+
+
     e.preventDefault();
     // Handle login logic here
     try {

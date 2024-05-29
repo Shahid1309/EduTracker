@@ -2,9 +2,9 @@ import { random, authentication } from "../token/index.js";
 import { getUserByEmail, createStudent, createTeacher } from "../db/users.js";
 import jwt from "jsonwebtoken";
 
-export const register = async (req, res) => {
+export const registerstudent = async (req, res) => {
   try {
-    console.log("In Reg");
+    console.log("In Register Student");
     console.log(req.body);
     const { firstName,
     lastName,
@@ -12,6 +12,7 @@ export const register = async (req, res) => {
     contact,
     country,
     city,
+    guardianName,guardianContact,
   password,userType} = req.body;
 
     if (!email || !password) {
@@ -25,27 +26,14 @@ export const register = async (req, res) => {
     }
 
     const salt = random();
-    if(userType==='student'){
+    // if(userType==='student'){
       const newUser = await createStudent({
         firstName,lastName,contact:req.body.contactNo,userType,email,guardianName:req.body.guardianName,guardianContact:req.body.guardianContactNo,country,city,authentication:{
           password:authentication(salt,password),
           salt,
         }
       });
-    }
-    else{
-    const newUser = await createTeacher({
-      firstName,
-    lastName,
-    email,
-    contact,
-    country,
-    city,userType,
-    authentication:{
-      password:authentication(salt,password),
-      salt,
-    }
-    });}
+    // }
 
 
     return res.status(200).json({ email,userType });

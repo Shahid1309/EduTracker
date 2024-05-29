@@ -18,12 +18,12 @@ export const reducer = (state, action) => {
           userType:null
         }
 
-    // case 'INITIAL':
-    //   return {
-    //     ...state,
-    //     tasks: action.state.tasks,
-    //     email: action.state.email
-    //   };
+    case 'INITIAL':
+      return {
+        ...state,
+        userType: action.state.userType,
+        email: action.state.email
+      };
     // case 'ADD_TASK':
     //   return {
     //     ...state,

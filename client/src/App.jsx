@@ -2,6 +2,7 @@
 import Dashboard from './Component/Dashboard';
 import Profile from './Component/Profile';
 import About from './Component/About';
+import axios from 'axios';
 import Help from './Component/Help';
 import AddStudent from './Component/AddStudent';
 import DeleteStudent from './Component/DeleteStudent';
@@ -15,15 +16,43 @@ import Graph from './Component/Graph'
 import RegisterStudent from './Component/RegisterStudent'
 import StudentList from './Component/StudentList'
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useStateValue } from './Component/StateProvider';
-
+import { useEffect } from 'react';
 import AttendanceUpdate from './Component/UpdateForms/AttendanceUpdate';
 import MarksUpdate from './Component/UpdateForms/Marksupdate';
 import EngagementUpdate from './Component/UpdateForms/EngagementUpdate';
+import RegisterTeacher from './Component/RegisterTeacher';
 
 const App = () => {
   const {state,dispatch} = useStateValue();
+  // const navigate = useNavigate();
+
+  useEffect(() => {
+    const initial = async () => {
+      const getData = await axios
+        .get("http://localhost:8080", {
+          withCredentials: true,
+          credentials: 'include',
+        })
+        .then((res) => res?.data);
+      if (getData)
+      {
+        dispatch({
+          type: "INITIAL",
+          state: getData,
+        });
+      // console.log(getData);
+      // if(state.userType==="student")
+      //   navigate('/adminlayout');
+      //   else if(state.userType==="teacher") 
+      //     navigate('adminlayout/profile');
+    }
+        else return;
+    };
+    initial();
+  }, []);
+
   return (
   
     <Router>
@@ -53,6 +82,7 @@ const App = () => {
       </Route>
     </Routes>
   </Router>
+  // <RegisterTeacher/>
   );
 };
 

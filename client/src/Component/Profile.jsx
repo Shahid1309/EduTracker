@@ -1,7 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useStateValue } from './StateProvider';
+import axios from 'axios';
 
 const Profile = () => {
+
+  const {state,dispatch} = useStateValue();
+
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
@@ -21,6 +26,24 @@ const Profile = () => {
     console.log('Updated Profile:', profile);
     // You can add your update logic here
   };
+
+  useEffect(() => {
+    // Fetch profile data from the server
+    // and update the state
+    const initial = async () => {
+      const response= await axios.get(`http://localhost:8080/getdetails/${state.email}`,)
+    console.log(response.data.resp);
+    const details=response.data.resp;
+    setProfile({firstName: details.firstName,
+    lastName: details.lastName,
+    email: details.email,
+    contactNo: details.contact,
+    country:details.country,
+    city:details.city});
+    }
+    initial();
+  }, []);
+
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg">

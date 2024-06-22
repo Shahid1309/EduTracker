@@ -2,7 +2,6 @@ import React from "react";
 import MyChart from "./MyChart";
 import MyChartTwo from "./MyChartTwo";
 import Graph from "./Graph";
-import Task from "./Task";
 import Footer from "./Footer";
 
 
@@ -26,10 +25,6 @@ const Dashboard = () => {
           </h1>
           <Graph />
         </div>
-        <div className="bg-gray-100">
-          <Task/>
-        </div>
-        {/* <Notification/> */}
       </div>
       <div className=" "> 
       

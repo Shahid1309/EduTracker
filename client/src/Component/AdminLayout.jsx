@@ -5,14 +5,6 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import { useStateValue } from './StateProvider'
 
 const AdminLayout = () => {
-  const navigate = useNavigate();
-  const { state, dispatch } = useStateValue();
-//   useEffect(() => {
-//     if(!state.userType){
-//       console.log("Before Navigate")
-//       navigate('/')
-//   }
-// },[]);
 
   return (
    

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useStateValue } from "./StateProvider";
-// import Dashboard from "../Deshboard/Dashboard";
+import Logo from '../assets/logo2.png'
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -26,11 +26,7 @@ const LoginPage = () => {
           type: "INITIAL",
           state: getData,
         });
-      // console.log(getData);
-      // if(state.userType==="student")
-      //   navigate('/adminlayout');
-      //   else if(state.userType==="teacher") 
-      //     navigate('adminlayout/profile');
+     
       if(state.userType==="student")
         navigate('/adminlayout');
         else if(state.userType==="teacher") navigate('adminlayout/profile');
@@ -80,8 +76,8 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-slate-400">
       <div className="max-w-md w-full px-6 py-8 bg-white shadow-md overflow-hidden sm:rounded-lg">
-        <div className="flex justify-center">
-          {/* <img className="h-12" src={logo} alt="Logo" /> */}
+        <div className="flex justify-center m-0 p-0">
+          <img className="h-18" src={Logo} alt="Logo" />
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-800">
           Log in to your account

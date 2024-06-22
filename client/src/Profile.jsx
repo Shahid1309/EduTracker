@@ -2,9 +2,6 @@
 import React from 'react';
 import Footer from './Footer';
 
-
-
-
 const Profile = () => {
   return (
     
@@ -79,15 +76,7 @@ const Profile = () => {
                   type="text"
                 />
               </div>
-              {/* <div className="col-span-2">
-                <label className="block mb-2">About Me</label>
-                <textarea
-                  defaultValue="I am John Doe and I love to code."
-                  className="form-textarea w-full bg-gray-100 border border-gray-300 p-2 rounded"
-                  placeholder="About Me"
-                  rows="4"
-                ></textarea>
-              </div> */}
+  
             </div>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
@@ -115,3 +104,47 @@ export default Profile;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <nav>
+<ul className="space-y-2">
+ 
+  <NavItem to="profile" text="Profile"  isOpen={isOpen} />
+  {state.userType=='student'?<NavItem to="mycharts" text="Marks"  isOpen={isOpen} />:null}
+  {state.userType=='student'?<NavItem to="myCharttwo" text="Engagement"  isOpen={isOpen} />:null}
+  {state.userType=='student'?<NavItem to="graph" text="Attendance"  isOpen={isOpen} />:null}
+  {state.userType=='teacher'?<NavItem to="register-student" text="Register Student"  isOpen={isOpen} />:null}
+  {state.userType=='teacher'?<NavItem to="student-list" text="Student List"  isOpen={isOpen} />:null}
+  
+  {state.userType=='teacher'?<NavItem to="update-marks" text="Marks Update"  isOpen={isOpen} />:null}
+  {state.userType=='teacher'?<NavItem to="update-attendance" text="Attendance Update"  isOpen={isOpen} />:null}
+  {state.userType=='teacher'?<NavItem to="update-engagement" text="Engagement Update" isOpen={isOpen} />:null}
+
+
+  <NavItem to="about" text="About Us"  isOpen={isOpen} />
+  <NavItem to="help" text="Help"  isOpen={isOpen} />
+</ul>
+</nav> */}

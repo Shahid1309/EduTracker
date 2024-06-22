@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useStateValue } from './StateProvider';
 import axios from 'axios';
+import Footer from './Footer';
 
 const Profile = () => {
 
@@ -46,7 +47,8 @@ const Profile = () => {
 
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg">
+    <>
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8 border border-gray-800">
       <h2 className="text-2xl font-bold mb-6 text-center">Profile</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-4">
@@ -134,15 +136,20 @@ const Profile = () => {
           </div>
         </div>
         <div className="mt-6 text-center">
-          <button
+          {/* <button
             type="submit"
             className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Update
-          </button>
+          </button> */}
         </div>
       </form>
+      
     </div>
+    <div className=" mt-32">
+    <Footer/>
+    </div>
+    </>
   );
 };
 

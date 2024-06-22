@@ -3,14 +3,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import { useStateValue } from './StateProvider';
-import {
-  HomeIcon,
-  UserIcon,
-  AcademicCapIcon,
-  CalendarIcon,
-  DocumentTextIcon,
-  QuestionMarkCircleIcon,
+
+import { 
+  UserIcon, 
+  ChartBarIcon, 
+  AcademicCapIcon, 
+  ClipboardListIcon, 
+  UserAddIcon, 
+  UsersIcon, 
+  PencilAltIcon, 
+  CheckIcon, 
+  LightningBoltIcon, 
+  InformationCircleIcon, 
+  QuestionMarkCircleIcon 
 } from '@heroicons/react/outline';
+
+
+
 
 
 const SideNavbar = () => {
@@ -25,26 +34,24 @@ const SideNavbar = () => {
     <div className={`bg-blue-50 ${isOpen ? 'w-64' : 'w-18'} flex flex-col items-center justify-between transition-all duration-300 h-screen sticky top-0`}>
       <div className="py-4">
         {/* Logo or Branding */}
-        <img src="logo.png" alt="EduTrackr " className="h-10 w-auto mx-auto" />
+       
         
         {/* Navigation Links */}
         <nav>
-          <ul className="space-y-2">
+          <ul className="space-y-2 font-serif">
            
             <NavItem to="profile" text="Profile" Icon={UserIcon} isOpen={isOpen} />
-            {state.userType=='student'?<NavItem to="mycharts" text="My Charts" Icon={HomeIcon} isOpen={isOpen} />:null}
-            {state.userType=='student'?<NavItem to="myCharttwo" text="Engagement" Icon={CalendarIcon} isOpen={isOpen} />:null}
-            {state.userType=='student'?<NavItem to="graph" text="Attendance" Icon={DocumentTextIcon} isOpen={isOpen} />:null}
-            {state.userType=='teacher'?<NavItem to="register-student" text="Register Student" Icon={DocumentTextIcon} isOpen={isOpen} />:null}
-            {state.userType=='teacher'?<NavItem to="student-list" text="Student List" Icon={QuestionMarkCircleIcon} isOpen={isOpen} />:null}
-            
-            {state.userType=='teacher'?<NavItem to="update-marks" text="Marks Update" Icon={DocumentTextIcon} isOpen={isOpen} />:null}
-            {state.userType=='teacher'?<NavItem to="update-attendance" text="Attendance Update" Icon={QuestionMarkCircleIcon} isOpen={isOpen} />:null}
-            {state.userType=='teacher'?<NavItem to="update-engagement" text="Engagement Update" Icon={DocumentTextIcon} isOpen={isOpen} />:null}
-         
-
-            <NavItem to="about" text="About Us" Icon={AcademicCapIcon} isOpen={isOpen} />
+            {state.userType=='student'?<NavItem to="mycharts" text="Marks" Icon={ChartBarIcon} isOpen={isOpen} />:null}
+            {state.userType=='student'?<NavItem to="myCharttwo" text="Engagement" Icon={AcademicCapIcon} isOpen={isOpen} />:null}
+            {state.userType=='student'?<NavItem to="graph" text="Attendance" Icon={ClipboardListIcon} isOpen={isOpen} />:null}
+            {state.userType=='teacher'?<NavItem to="register-student" text="Register Student" Icon={UserAddIcon} isOpen={isOpen} />:null}
+            {state.userType=='teacher'?<NavItem to="student-list" text="Student List" Icon={UsersIcon} isOpen={isOpen} />:null}
+            {state.userType=='teacher'?<NavItem to="update-marks" text="Marks Update" Icon={PencilAltIcon} isOpen={isOpen} />:null}
+            {state.userType=='teacher'?<NavItem to="update-attendance" text="Attendance Update" Icon={CheckIcon} isOpen={isOpen} />:null}
+            {state.userType=='teacher'?<NavItem to="update-engagement" text="Engagement Update" Icon={LightningBoltIcon} isOpen={isOpen} />:null}
+            <NavItem to="about" text="About Us" Icon={InformationCircleIcon} isOpen={isOpen} />
             <NavItem to="help" text="Help" Icon={QuestionMarkCircleIcon} isOpen={isOpen} />
+
           </ul>
         </nav>
       </div>

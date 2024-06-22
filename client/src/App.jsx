@@ -4,10 +4,6 @@ import Profile from './Component/Profile';
 import About from './Component/About';
 import axios from 'axios';
 import Help from './Component/Help';
-import AddStudent from './Component/AddStudent';
-import DeleteStudent from './Component/DeleteStudent';
-import SetNotifications from './Component/SetNotifications';
-import Logout from './Component/Logout';  
 import LoginPage from './Component/LoginPage'
 import AdminLayout from './Component/AdminLayout'
 import MyChart from './Component/MyChart'
@@ -63,12 +59,8 @@ const App = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="about" element={<About />} />
         <Route path="help" element={<Help />} />
-        <Route path="add-student" element={<AddStudent />} />
-        <Route path="delete-student" element={<DeleteStudent />} />
         <Route path="register-student" element={<RegisterStudent />} />
         <Route path='student-list' element={<StudentList/>}/>
-        <Route path="set-notifications" element={<SetNotifications />} />
-        <Route path="logout" element={<Logout />} />
         <Route path='mycharts' element={<MyChart/>} />
         <Route path='mycharttwo' element={<MyChartTwo/>}/>
         <Route path='graph' element={<Graph/>}/>

@@ -33,7 +33,7 @@ export default function BasicBars() {
 
   return (
     <>
-    <h1 className="text-center p-4 font-serif text-lg">Weekly Attendance Report</h1>
+    <h1 className="text-center p-4 font-serif text-xl  font-bold">Weekly Attendance Report</h1>
     <BarChart
       xAxis={[{ scaleType: 'band', data: ['1st Week', '2nd Week', '3rd Week', ] }]}
       series={[{ data: [details.attendance.week1.physics,details.attendance.week2.physics, details.attendance.week3.physics] }, { data: [details.attendance.week1.maths, details.attendance.week2.maths, details.attendance.week3.maths] }, { data: [details.attendance.week1.chemistry, details.attendance.week2.chemistry, details.attendance.week3.chemistry] }]}
